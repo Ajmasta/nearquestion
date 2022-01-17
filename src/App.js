@@ -51,7 +51,7 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
       });
   };
   const answer = (uuid, link) => {
-    contract.addAnswer({ uuid, link }, BOATLOAD_OF_GAS, 0);
+    contract.addAnswer({ uuid, link }, BOATLOAD_OF_GAS);
   };
   const signIn = () => {
     wallet.requestSignIn(
