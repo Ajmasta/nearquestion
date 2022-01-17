@@ -24,7 +24,7 @@ export default function Form({ onSubmit, currentUser }) {
           />
           <span title="NEAR Tokens">Ⓝ</span>
         </p>
-        <button type="submit">Sign</button>
+        <button type="submit">Ask</button>
       </fieldset>
     </form>
   );

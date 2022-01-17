@@ -17,7 +17,7 @@ export default function Messages({ messages, answer, answers }) {
             <strong>Question:</strong> {message.text}
             {console.log(message)}
             <br />
-            <strong>Reward:</strong> {message.fee / 10 ** 24}
+            <strong>Reward:</strong> {(message.fee / 10 ** 24).toFixed(3)}
             <br />
             <button
               onClick={() => {
@@ -63,6 +63,9 @@ export default function Messages({ messages, answer, answers }) {
           )}
           {checkAnswer.includes(i)
             ? answers.map((answer) => {
+                const answersToQuestion = answers.filter(
+                  (answer) => answer.uuid === message.uuid
+                );
                 if (answer.uuid === message.uuid) {
                   return (
                     <div
@@ -82,6 +85,10 @@ export default function Messages({ messages, answer, answers }) {
                     </div>
                   );
                 }
+                if (answersToQuestion.length === 0) {
+                  return "No answer!";
+                }
+
                 return "";
               })
             : ""}
