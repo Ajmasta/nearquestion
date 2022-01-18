@@ -7,7 +7,7 @@ export default function Messages({ messages, answer, answers }) {
   const [answerInput, setAnswerInput] = useState([]);
   const [answerText, setAnswerText] = useState([]);
   return (
-    <>
+    <div style={{ marginBottom: "100px" }}>
       <h2>Messages</h2>
       {messages.map((message, i) => (
         // TODO: format as cards, add timestamp
@@ -62,39 +62,36 @@ export default function Messages({ messages, answer, answers }) {
             ""
           )}
           {checkAnswer.includes(i)
-            ? answers.map((answer) => {
-                const answersToQuestion = answers.filter(
-                  (answer) => answer.uuid === message.uuid
-                );
-                if (answer.uuid === message.uuid) {
-                  return (
-                    <div
-                      style={{
-                        boxShadow: "2px 2px 2px black",
-                        padding: "10px 0",
-                      }}
-                    >
-                      <p>{answer.link}</p>{" "}
-                      <p
+            ? answers.filter((answer) => answer.uuid === message.uuid)
+                .length === 0
+              ? "No answer yet!"
+              : answers.map((answer) => {
+                  if (answer.uuid === message.uuid) {
+                    return (
+                      <div
                         style={{
-                          fontSize: "13px",
+                          boxShadow: "2px 2px 2px black",
+                          padding: "10px 0",
                         }}
                       >
-                        Author: {answer.sender}
-                      </p>
-                    </div>
-                  );
-                }
-                if (answersToQuestion.length === 0) {
-                  return "No answer!";
-                }
+                        <p>{answer.link}</p>{" "}
+                        <p
+                          style={{
+                            fontSize: "13px",
+                          }}
+                        >
+                          Author: {answer.sender}
+                        </p>
+                      </div>
+                    );
+                  }
 
-                return "";
-              })
+                  return "";
+                })
             : ""}
         </>
       ))}
-    </>
+    </div>
   );
 }
 

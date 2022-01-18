@@ -12,7 +12,7 @@ export default function Form({ onSubmit, currentUser }) {
           <input autoComplete="off" autoFocus id="message" required />
         </p>
         <p>
-          <label htmlFor="donation">Rewards (optional):</label>
+          <label htmlFor="donation">Rewards:</label>
           <input
             autoComplete="off"
             defaultValue={"0"}
